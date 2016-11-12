@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>团购-限时抢</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<script language="JavaScript" type="text/javascript">
+			window.onload = function(){
+				showTime();
+			}
+			function showTime(){
+				var nowtime = new Date();//当前时间
+				var endtime = new Date("2016/11/20,12:20:12");//结束时间
+				var lefttime = parseInt((endtime.getTime() - nowtime.getTime())/(1000));
+				
+				var date = parseInt(lefttime/(24 * 60 * 60));
+				var hour = parseInt(lefttime/(60 * 60)%24);
+				var minutes = parseInt(lefttime/60 % 60);
+				var s = parseInt(lefttime % 60);
+				document.getElementById('leftTime').innerHTML = date+" 天  "+hour+' 小时 '+minutes+' 分钟 '+s+' 秒';
+				if(lefttime <= 5){
+					document.getElementById('leftTime').innerHTML = "团购结束";
+				}
+				var set = setTimeout(showTime,500);
+			}
+		</script>
+	</head>
+	<body>
+		<div class="content3">
+			<div class="time">距离结束还剩:&nbsp;<span id="leftTime"></span></div>
+		</div><!--content1结束-->
+	</body>
+</html>
